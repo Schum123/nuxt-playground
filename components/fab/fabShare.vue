@@ -49,37 +49,12 @@ export default {
     mounted () {
         this.id = this._uid
     },
-    beforeDestroy: function () {
-        this.$el.removeEventListener('click', this.shareActive)
-    },
     methods: {
         shareIsActive: function () {
             this.isActive = !this.isActive
         },
     },
 }
-    /*var $share = document.getElementById("share");
-var $toolbar = document.getElementById("fab-toolbar");
-
-function toggleToolbar() {  
-  if ($toolbar.classList.contains("active")) {
-    $toolbar.classList.remove("active");
-  } else {
-    $toolbar.classList.add("active");
-  }
-}
-
-$share.addEventListener("click", toggleToolbar);
-
-$toolbar.addEventListener("click", function(e){
-  e.stopPropagation();
-});
-
-document.addEventListener("click", function(e){
-  if ($toolbar.classList.contains("active")) {
-    toggleToolbar();
-  }
-});*/
 </script>
 
 <style>
