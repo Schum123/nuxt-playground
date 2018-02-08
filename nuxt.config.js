@@ -17,7 +17,13 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
-  modules: ['nuxt-material-design-icons'],
+  modules:
+  ['nuxt-material-design-icons',
+    ['nuxt-google-maps-module', {
+        key: 'AIzaSyCo5nL_4BFMj2UKboWb_6VCOCcBCJyX77A',
+      }
+    ],
+  ],
   /*
   ** Build configuration
   */
@@ -26,7 +32,7 @@ module.exports = {
     ** Run ESLint on save
     */
     vendor: ['axios'],
-    extend (config, { isDev, isClient }) {
+    extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',

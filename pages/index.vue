@@ -1,5 +1,5 @@
 <template>
-  <div style="padding-top: 160px;">
+  <div style="padding-top: 160px; padding-bottom: 50px;">
     <form class="inputbox">
       <input required="required" type="text" v-model="search" />
       <button class="del" type="reset" v-on:click="clearSearch"></button>
@@ -114,6 +114,7 @@ export default {
     }
     .featured {
       grid-column: 1/ span 2;
+      height: 560px;
     }
     .featured h1 {
       font-size: 30px;
@@ -138,6 +139,7 @@ export default {
     position: relative;
     top: 0;
     transition: all .1s ease-in;
+    max-height: 450px;
   }
   
   .card:hover {
@@ -164,6 +166,7 @@ export default {
     /* make p grow to fill available space*/
     line-height: 1.4;
     margin: 1em 0;
+    overflow: hidden;
   }
   /* typography */
   

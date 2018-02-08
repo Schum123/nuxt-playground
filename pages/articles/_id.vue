@@ -1,26 +1,37 @@
 <template>
     <div class="container">
-        <div>
-            <img class="banner-fluid" :src="backgroundImage" />
+        <div class="wrapper card">
+            <div class="item img">
+                <img class="banner-fluid" :src="backgroundImage" style="width: 100%;" />
+            </div>
+            <div class="item info article">
+                <div class="article--info">
+                    <h1>{{ heading }}</h1>
+                    <h3>{{ company }}</h3>
+                    <!--<p>{{ preamble }}</p> use later-->
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sagittis tincidunt libero, ut sollicitudin
+                        elit. Duis vel tincidunt lorem. In ante neque, auctor nec orci id, molestie malesuada purus. Aenean
+                        vel scelerisque eros. Etiam non dolor commodo, tincidunt ante eu, molestie est. Orci varius natoque
+                        penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc at neque tempor, viverra
+                        purus nec, ornare massa. Sed rhoncus enim vel erat egestas, eget gravida mi sollicitudin.</p>
+                </div>
+                <div class="article--footer">
+                    <nuxt-link to="/">Back to list</nuxt-link>
+                </div>
+            </div>
         </div>
-        <div>
-            <h2>Details</h2>
-            <h1>{{ heading }}</h1>
-            <h3>{{ company }}</h3>
-            <p>{{ preamble }}</p>
-            <nuxt-link to="/">List of articles</nuxt-link>
-        </div>
+        <maps name="google"></maps>
     </div>
 </template>
 
-{ id: 1, href: "https://webdesign.tutsplus.com/articles/notes-from-behind-the-firewall-the-state-of-web-design-in-china--cms-22281",
-backgroundImage: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/china.png", heading: "Notes From Behind the Firewall:
-The State of Web Design in China", preamble: "", company: "Kendra Schaefer", isFeatured: true },
-
 <script>
 import axios from 'axios'
+import maps from '~/components/maps/maps'
 
 export default {
+    components: {
+        maps
+    },
   validate({ params }) {
     return !isNaN(+params.id)
   },
@@ -31,28 +42,65 @@ export default {
     } catch (e) {
       error({ message: 'User not found', statusCode: 404 })
     }
-  }
+  },
 }
 </script>
 
 <style scoped>
+    .card {
+        min-height: 100%;
+        background: white;
+        -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+    }
+    
     .container {
-        display: flex;
-        flex-direction: column;
+        max-width: 90%;
         max-width: 1240px;
         margin: 0 auto;
         padding-top: 110px;
         font-family: sans-serif;
     }
     
-    .container > div {
-        flex: 1;
-        width: 100%;
-        max-width: 100%;
+    .wrapper {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-columns: 100%;
+        padding: 20px;
+        grid-gap: 20px;
+    }
+    
+    .item.img {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+    
+    .item.info {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+    
+    .article h1,
+    .article h2,
+    .article h3 {
+        margin-bottom: 20px;
     }
     
     .article h1 {
-        margin-top: 10px;
+        line-height: 31px;
+    }
+    
+    .article h3 {
+        word-break: break-word;
+        line-height: 24px;
+    }
+    
+    .article p {
+        margin-bottom: 20px;
     }
     
     .banner-fluid {
@@ -64,16 +112,32 @@ export default {
         vertical-align: middle;
         border-style: none;
     }
-    /* Portrait tablet to landscape and desktop */
+    /* Portrait tablet to landscape and desktop*/
     
     @media (min-width: 769px) {
-        .container {
-            flex-direction: row-reverse;
+        .wrapper {
+            margin: 0 auto;
+            grid-template-columns: 50% 50%;
+            padding: 0;
+            grid-gap: 0px;
         }
-        .container > div {
-            flex: 1 1 50%;
-            max-width: 50%;
-            width: 50%;
+        .item {
+            padding: 20px;
+        }
+        .item.img {
+            grid-column-start: 2;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+        .item.info {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
     }
 </style>

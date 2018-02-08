@@ -2,14 +2,17 @@
   <div>
     <sngHeader/>
     <nuxt/>
+    <sngFooter/>
   </div>
 </template>
 
 <script>
 import sngHeader from '~/components/layout/sngHeader'
+import sngFooter from '~/components/layout/sngFooter'
 export default {
   components: {
-    sngHeader
+    sngHeader,
+    sngFooter
   }
 }
 </script>

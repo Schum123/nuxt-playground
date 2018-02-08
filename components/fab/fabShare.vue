@@ -1,5 +1,5 @@
 <template>
-    <div class="fab-toolbar" :id="id" v-on:click="shareIsActive" v-bind:class="{ active: isActive }">
+    <div class="fab-toolbar" v-on:click="shareIsActive" v-bind:class="{ active: isActive }">
         <ul class="toolbar">
             <li>
                 <a role="button">
@@ -32,7 +32,7 @@
             </li>
         </ul>
 
-        <a role="button" class="fab" id="share">
+        <a role="button" class="fab" :id="id">
             <i class="material-icons">share</i>
         </a>
     </div>
@@ -51,7 +51,7 @@ export default {
     },
     methods: {
         shareIsActive: function () {
-            this.isActive = !this.isActive
+            this.isActive = true
         },
     },
 }
