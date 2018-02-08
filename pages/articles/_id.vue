@@ -1,5 +1,7 @@
 <template>
     <div class="container">
+        <input type="hidden" id="lat" :value="latitude">
+        <input type="hidden" id="lng" :value="longitude">
         <div class="wrapper card">
             <div class="item img">
                 <img class="banner-fluid" :src="backgroundImage" style="width: 100%;" />
@@ -40,7 +42,7 @@ export default {
       const { data } = await axios.get(`http://localhost:3000/articles/${+params.id}`)
       return data
     } catch (e) {
-      error({ message: 'User not found', statusCode: 404 })
+      error({ message: 'Activity not found', statusCode: 404 })
     }
   },
 }

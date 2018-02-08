@@ -1,5 +1,6 @@
 <template>
     <footer class="footer">
+        <button @click="$store.commit('increment')">{{ $store.state.counter }}</button>
         <div class="social-area">
             <ul>
                 <li><a href="https://www.facebook.com/blackpizza?fref=ts" target="_blank" title="Join us on Facebook" class="shr-btn-facebook"><span>Facebook</span><i class="icon-facebook"></i></a></li>
@@ -9,7 +10,8 @@
             </ul>
         </div>
         <div class="credits">
-            <p>© 2018 <span class="footer-white">Text</span></p>LOGO<!--<img class="slice-footer" src="http://blackpizza.com/wp-content/uploads/2014/12/slice-pizza.png"
+            <p>© 2018 <span class="footer-white">Text</span></p><span class="slice-footer">LOGO</span>
+            <!--<img class="slice-footer" src="http://blackpizza.com/wp-content/uploads/2014/12/slice-pizza.png"
                 alt="Pizz and love">-->
         </div>
     </footer>
@@ -109,5 +111,45 @@
         line-height: 1px;
         padding: 0;
         /* left: 9%; */
+    }
+    
+    @media screen and (max-width: 59.9999em) {
+        .footer {
+            padding: 50px 0;
+        }
+        .footer {
+            min-height: 100px;
+        }
+        .footer .social-area {
+            display: none;
+        }
+        .footer .credits {
+            font-size: 14px;
+            margin-top: 0;
+        }
+        .shr-btn-facebook {
+            background: none;
+        }
+        .shr-btn-instagram {
+            background: none;
+        }
+        .shr-btn-behance {
+            background: none;
+        }
+        .shr-btn-soundcloud {
+            background: none;
+        }
+        .footer .credits p {
+            text-align: center;
+        }
+        .footer .credits p {
+            font-family: 'ProximaNovaBlack', helvetica, sans-serif;
+            text-align: center;
+            left: 0;
+            width: 100%;
+        }
+        .slice-footer {
+            display: none;
+        }
     }
 </style>
