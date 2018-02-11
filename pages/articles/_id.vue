@@ -17,11 +17,12 @@
                 </div>
                 <div class="article--footer">
                     <nuxt-link to="/" class="back">Back to list</nuxt-link>
+                    <nuxt-link class="button blue" :to="'/articles/book/'+id">Book!</nuxt-link>
                 </div>
             </div>
         </div>
         <maps name="google" :longitude="longitude" :latitude="latitude"></maps>
-    </div>
+    </div>  
 </template>
 
 <script>
@@ -47,6 +48,40 @@ export default {
 </script>
 
 <style scoped>
+    .button {
+        display: inline-block;
+        margin: 0.3em;
+        padding: .8em 4em;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        border-radius: 3px;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        border: none;
+        font-size: 15px;
+        text-align: center;
+    }
+    
+    .article--footer {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .button:hover {
+        box-shadow: 1px 6px 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    .blue {
+        background-color: #3AAFA9;
+        color: white;
+    }
+    
     .back {
         text-decoration: none;
         font-size: 20px;
@@ -64,14 +99,7 @@ export default {
         background: white;
         -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
         box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
-    }
-    
-    .container {
-        max-width: 90%;
-        max-width: 1240px;
-        margin: 0 auto;
-        padding-top: 110px;
-        font-family: sans-serif;
+        max-height: 100%;
     }
     
     .wrapper {
