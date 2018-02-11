@@ -1,29 +1,22 @@
 <template>
-    <div>
-        <div class="google-map" :id="mapName"></div>
-    </div>
+    <div class="google-map" :id="mapName"></div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'google-map',
-  props: ['name'],
-  data: function () {
+  props: ['name', 'longitude', 'latitude'],
+  data () {
     return {
       mapName: this.name + "-map",
       markerCoordinates: [{
-        latitude: 51.501527,
-        longitude: -0.1921837
-      }, {
-        latitude: 51.505874,
-        longitude: -0.1838486
-      }, {
-        latitude: 51.4998973,
-        longitude: -0.202432
+        latitude: this.latitude,
+        longitude: this.longitude
       }],
       map: null,
       bounds: null,
-      markers: []
+      markers: [],
     }
   },
   mounted: function () {
@@ -31,6 +24,7 @@ export default {
     const element = document.getElementById(this.mapName)
     const mapCentre = this.markerCoordinates[0]
     const options = {
+      zoom: 13,
       center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
     }
     this.map = new google.maps.Map(element, options);
@@ -41,22 +35,7 @@ export default {
         map: this.map
       });
     this.markers.push(marker)
-      this.map.fitBounds(this.bounds.extend(position))
     });
   }
 };
 </script>
-
-<style scoped>
-    .google-map {
-        width: 90%;
-        height: 600px;
-        margin: 20px auto;
-        background: gray;
-    }
-     @media (min-width: 769px) {
-          .google-map {
-              width: 100%;
-          }
-     }
-</style>

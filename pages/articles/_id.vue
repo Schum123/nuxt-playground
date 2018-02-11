@@ -1,7 +1,5 @@
 <template>
     <div class="container">
-        <input type="hidden" id="lat" :value="latitude">
-        <input type="hidden" id="lng" :value="longitude">
         <div class="wrapper card">
             <div class="item img">
                 <img class="banner-fluid" :src="backgroundImage" style="width: 100%;" />
@@ -18,11 +16,11 @@
                         purus nec, ornare massa. Sed rhoncus enim vel erat egestas, eget gravida mi sollicitudin.</p>
                 </div>
                 <div class="article--footer">
-                    <nuxt-link to="/">Back to list</nuxt-link>
+                    <nuxt-link to="/" class="back">Back to list</nuxt-link>
                 </div>
             </div>
         </div>
-        <maps name="google"></maps>
+        <maps name="google" :longitude="longitude" :latitude="latitude"></maps>
     </div>
 </template>
 
@@ -32,7 +30,7 @@ import maps from '~/components/maps/maps'
 
 export default {
     components: {
-        maps
+        maps    
     },
   validate({ params }) {
     return !isNaN(+params.id)
@@ -49,6 +47,18 @@ export default {
 </script>
 
 <style scoped>
+    .back {
+        text-decoration: none;
+        font-size: 20px;
+        color: #000;
+    }
+    
+    .card:hover {
+        top: 0px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    
     .card {
         min-height: 100%;
         background: white;

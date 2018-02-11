@@ -1,0 +1,12 @@
+.google-map {
+        width: 90%;
+        height: 600px;
+        margin: 20px auto;
+        background: gray;
+    }
+    
+    @media (min-width: 769px) {
+        .google-map {
+            width: 100%;
+        }
+    }
