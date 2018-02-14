@@ -16,7 +16,7 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#efc14e' },
   modules:
   ['nuxt-material-design-icons',
     ['nuxt-google-maps-module', {
@@ -25,10 +25,7 @@ module.exports = {
     ],
   ],
   css: [
-    // Load a Node.js module directly (here it's a Sass file)
-    // CSS file in the project
     '@/assets/css/main.css',
-    // SCSS file in the project
     '@/assets/css/main.scss'
   ],
   /*
@@ -38,7 +35,8 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    vendor: ['axios'],
+    vendor: ['axios', 'vue-google-autocomplete'],
+
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
@@ -49,5 +47,8 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  plugins: [ {
+    src: '~/plugins/vue-google-autocomplete', ssr: false
+  }]
 }

@@ -1,56 +1,100 @@
 <template>
-  <div style="padding-top: 160px; padding-bottom: 50px;">
-    <form class="inputbox">
-      <input required="required" type="text" v-model="search" />
-      <button class="del" type="reset" v-on:click="clearSearch"></button>
-    </form>
-    <div class="band">
-      <div class="item" v-bind:class="{ featured: article.isFeatured }" v-for="article in filteredArticles" :key="article.id">
-        <nuxt-link class="card" :to="'/articles/'+article.id">
-          <div class="stories-item-tag" v-if="article.isFeatured">Featured</div>
-          <div class="thumb" v-bind:style="{ 'background-image': 'url(' + article.backgroundImage + ')' }"></div>
-          <article>
-            <h1>{{ article.heading }}</h1>
-            <p v-if="article.preamle != ''">{{ article.preamble }}</p>
-            <span>{{ article.company }}</span>       
-          </article>
-        </nuxt-link>
-        <fabShare></fabshare>
-      </div>
+  <div>
+    <div class="bg">
+      <img src="~/assets/sport.png" />
+    </div>
+    <div class="autocomplete-wrapper">
+      <no-ssr>
+        <vue-google-autocomplete ref="address" id="map" name="test" class="form-control" placeholder="Please type your address"></vue-google-autocomplete>
+      </no-ssr>
+      <nuxt-link class="autocomplete-link button blue" :to="'/activities'">Find</nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-import fabShare from '~/components/fab/fabShare'
-
+//import VueGoogleAutocomplete from 'vue-google-autocomplete'
 export default {
-  components: {
-    fabShare
-  },
-  data () {
-    return {
-      search: '',
+    data () {
+        return {
+          address: ''
+        }
     }
-   },
-  async asyncData() {
-    const { data } = await axios.get('http://localhost:3000/articles')
-    return { articles: data }
-  },
-  methods: {
-      clearSearch: function () {
-          this.search = "";
-      }
-  },
-  computed:
-  {
-    filteredArticles: function() {
-    var textSearch = this.search;
-      return this.articles.filter(function(el) {
-        return el.company.toLowerCase().indexOf(textSearch.toLowerCase()) !== -1 || el.heading.toLowerCase().indexOf(textSearch.toLowerCase()) !== -1;
-      });
-    }
-  }
 }
 </script>
+
+<style scoped>
+  .autocomplete-wrapper {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+  }
+  
+  .button {
+    display: inline-block;
+    margin: 0.3em;
+    padding: .8em 4em;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 3px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    border: none;
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  .blue {
+    background-color: #3AAFA9;
+    color: white;
+  }
+  
+  .bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+  }
+  
+  .bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+  }
+  
+  .form-control {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: #FFF;
+  }
+  
+  .form-control::-webkit-input-placeholder {
+    color: #FFF;
+  }
+  
+  .autocomplete-link {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35%;
+    color: #FFF;
+    text-align: center;
+  }
+</style>

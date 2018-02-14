@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <sngHeader/>
+  <div class="wrapper">
+    <sngHeader v-if="!$route.path === '/'"></sngheader>
     <nuxt/>
-    <sngFooter/>
+    <sngFooter v-if="!$route.path === '/'"></sngfooter>
   </div>
 </template>
 

@@ -27,6 +27,10 @@ body {
     box-sizing: border-box;
     margin: 0;
   }
+  html, body {
+  height: 100%;
+  margin-bottom: -260px;
+}
 
     .container {
         max-width: 90%;
@@ -35,3 +39,12 @@ body {
         padding-top: 110px;
         font-family: sans-serif;
     }
+    .page-wrap {
+      padding-top: 160px; 
+      padding-bottom: 50px; 
+      min-height: 100%;
+    }
+    .page-wrap:after {
+  content: "";
+  display: block;
+}

@@ -6,7 +6,7 @@
                 <form class="col s12" id="reg-form">
                     <div class="row">
                         <div class="input-field">
-                            <input id="first_name" type="text" class="validate" required>
+                            <input id="first_name" type="text" class="validate" required v-bind:class="{ active: isActive }" v-model="firstName">
                             <label for="first_name">First Name</label>
                         </div>
                         <div class="input-field">
@@ -66,17 +66,36 @@
 import axios from 'axios'
 
 export default {
+    data () {
+        return {
+            isActive: false,
+            id: null,
+            firstName: "",
+            lastName: "",
+        }
+    },
   validate({ params }) {
     return !isNaN(+params.id)
   },
   async asyncData({ params, error }) {
     try {
-      const { data } = await axios.get(`http://localhost:3000/articles/${+params.id}`)
+      const { data } = await axios.get(`http://localhost:3000/activities/${+params.id}`)
       return data
     } catch (e) {
       error({ message: 'Activity not found', statusCode: 404 })
     }
   },
+   watch: {
+    firstName: function (val) {
+      this.fullName = val + ' ' + this.lastName
+    },
+    lastName: function (val) {
+      this.fullName = this.firstName + ' ' + val
+    }
+  },
+  computed: {
+
+  }
 }
 </script>
 

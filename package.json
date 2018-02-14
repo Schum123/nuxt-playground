@@ -16,7 +16,8 @@
     "axios": "^0.17.1",
     "nuxt": "^1.0.0",
     "nuxt-google-maps-module": "^1.5.1",
-    "nuxt-material-design-icons": "^1.0.4"
+    "nuxt-material-design-icons": "^1.0.4",
+    "vue-google-autocomplete": "^1.0.14"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

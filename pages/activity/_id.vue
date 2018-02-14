@@ -17,7 +17,7 @@
                 </div>
                 <div class="article--footer">
                     <nuxt-link to="/" class="back">Back to list</nuxt-link>
-                    <nuxt-link class="button blue" :to="'/articles/book/'+id">Book!</nuxt-link>
+                    <nuxt-link class="button blue" :to="'/activity/book/'+id">Book!</nuxt-link>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@ export default {
   },
   async asyncData({ params, error }) {
     try {
-      const { data } = await axios.get(`http://localhost:3000/articles/${+params.id}`)
+      const { data } = await axios.get(`http://localhost:3000/activities/${+params.id}`)
       return data
     } catch (e) {
       error({ message: 'Activity not found', statusCode: 404 })

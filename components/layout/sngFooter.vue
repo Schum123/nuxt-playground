@@ -17,6 +17,12 @@
     </footer>
 </template>
 
-<style scoped>
-    
-</style>
+<script>
+    export default {
+        data () {
+            return {
+                showFooter: null
+            }
+        }
+    }
+</script>
