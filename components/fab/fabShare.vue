@@ -40,19 +40,19 @@
 
 <script>
 export default {
-    data () {
-        return {
-            isActive: false,
-            id: null
-        }
-    },
-    mounted () {
-        this.id = this._uid
-    },
-    methods: {
-        shareIsActive: function () {
-            this.isActive = true
-        },
-    },
-}
+  data() {
+    return {
+      isActive: false,
+      id: null
+    };
+  },
+  mounted() {
+    this.id = this._uid;
+  },
+  methods: {
+    shareIsActive: function() {
+      this.isActive = true;
+    }
+  }
+};
 </script>

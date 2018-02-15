@@ -22,35 +22,37 @@
 </template>
 
 <script>
-import axios from 'axios'
-import fabShare from '~/components/fab/fabShare'
+import axios from "axios";
+import fabShare from "~/components/fab/fabShare";
 
 export default {
   components: {
     fabShare
   },
-  data () {
+  data() {
     return {
-      search: '',
-    }
-   },
+      search: ""
+    };
+  },
   async asyncData() {
-    const { data } = await axios.get('http://localhost:3000/activities')
-    return { articles: data }
+    const { data } = await axios.get("http://localhost:3000/activities");
+    return { articles: data };
   },
   methods: {
-      clearSearch: function () {
-          this.search = "";
-      }
+    clearSearch: function() {
+      this.search = "";
+    }
   },
-  computed:
-  {
+  computed: {
     filteredArticles: function() {
-    var textSearch = this.search;
+      var textSearch = this.search;
       return this.articles.filter(function(el) {
-        return el.company.toLowerCase().indexOf(textSearch.toLowerCase()) !== -1 || el.heading.toLowerCase().indexOf(textSearch.toLowerCase()) !== -1;
+        return (
+          el.company.toLowerCase().indexOf(textSearch.toLowerCase()) !== -1 ||
+          el.heading.toLowerCase().indexOf(textSearch.toLowerCase()) !== -1
+        );
       });
     }
   }
-}
+};
 </script>

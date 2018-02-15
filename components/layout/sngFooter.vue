@@ -1,6 +1,5 @@
 <template>
     <footer class="footer">
-        <button @click="$store.commit('increment')">{{ $store.state.counter }}</button>
         <div class="social-area">
             <ul>
                 <li><a href="https://www.facebook.com/blackpizza?fref=ts" target="_blank" title="Join us on Facebook" class="shr-btn-facebook"><span>Facebook</span><i class="icon-facebook"></i></a></li>
@@ -18,11 +17,11 @@
 </template>
 
 <script>
-    export default {
-        data () {
-            return {
-                showFooter: null
-            }
-        }
-    }
+export default {
+  data() {
+    return {
+      showFooter: null
+    };
+  }
+};
 </script>

@@ -8,23 +8,23 @@
 
 <script>
 export default {
-    data () {
-        return { 
-            search: "",
-            scrolled: false,
-            smallClass: 'small',
-        };
-    },
+  data() {
+    return {
+      search: "",
+      scrolled: false,
+      smallClass: "small"
+    };
+  },
   methods: {
-    handleScroll () {
-        this.scrolled = window.scrollY > 0
+    handleScroll() {
+      this.scrolled = window.scrollY > 0;
     }
   },
-    beforeMount () {
-        window.addEventListener('scroll', this.handleScroll);
-    },
-    beforeDestroy () {
-        window.removeEventListener('scroll', this.handleScroll);
-    },
-}
+  beforeMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
+};
 </script>

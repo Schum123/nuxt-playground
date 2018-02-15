@@ -1,16 +1,24 @@
 import Vuex from 'vuex'
 
-const createStore = () => {
+const store = () => {
   return new Vuex.Store({
     state: {
-      counter: 0
+      gender: '',
+      firstname: '',
+      lastname: '',
     },
     mutations: {
-      increment (state) {
-        state.counter++
-      }
+      SET_GENDER(state, gender) {
+        state.gender = gender;
+      },
+      SET_FIRSTNAME(state, firstname) {
+        state.firstname = firstname;
+      },
+      SET_LASTNAME(state, lastname) {
+        state.lastname = lastname;
+      },
     }
   })
-}
+};
 
-export default createStore
+export default store
