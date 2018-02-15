@@ -1,7 +1,9 @@
 <template>
     <div class="container">
         <div class="row">
+          <div class="head-wrapper">
             <h1>{{ heading }}</h1>
+          </div>
             <registerForm>
             </registerform>
         </div>
@@ -35,3 +37,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.head-wrapper {
+  background-color: #fff;
+  padding: 30px;
+  max-width: 40em;
+  margin: 0 auto;
+}
+</style>

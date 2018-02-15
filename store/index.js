@@ -6,6 +6,10 @@ const store = () => {
       gender: '',
       firstname: '',
       lastname: '',
+      email: '',
+      address: '',
+      city: '',
+      zip: ''
     },
     mutations: {
       SET_GENDER(state, gender) {
@@ -16,6 +20,18 @@ const store = () => {
       },
       SET_LASTNAME(state, lastname) {
         state.lastname = lastname;
+      },
+      SET_EMAIL(state, email) {
+        state.email = email;
+      },
+      SET_ADDRESS(state, address) {
+        state.address = address;
+      },
+      SET_CITY(state, city) {
+        state.city = city;
+      },
+      SET_ZIP(state, zip) {
+        state.zip = zip;
       },
     }
   })

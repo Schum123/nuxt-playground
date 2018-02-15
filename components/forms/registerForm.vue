@@ -3,37 +3,42 @@
         <form class="col s12" id="reg-form">
             <div class="row">
                 <div class="input-field">
-                    <inputField id="first_name" name="name" type="email" placeholder="" v-model="inputValue" required>
+                    <inputField id="first_name" name="firstname" type="text" placeholder="" v-model="firstname" required>
                     </inputfield>
-                    <label for="first_name" v-bind:class="{ active: inputValue }">First Name</label>
+                    <label for="first_name" v-bind:class="{ active: firstname }">First Name</label>
                 </div>
                 <div class="input-field">
-                    <input id="last_name" type="text" class="validate form-input" name="lastname" required v-model="lastname">
-                    <label for="last_name">Last Name</label>
+                    <inputField id="last_name" name="lastname" type="text" placeholder="" v-model="lastname" required>
+                    </inputfield>
+                    <label for="last_name" v-bind:class="{ active: lastname }">Last Name</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email" type="email" class="validate form-input" required>
-                    <label for="email">Email</label>
+                    <inputField id="email" name="email" type="email" placeholder="" v-model="email" required>
+                    </inputfield>
+                    <label for="email" v-bind:class="{ active: email }">Email</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="address" type="text" class="validate form-input" minlength="1" required>
-                    <label for="address">Address</label>
+                    <inputField id="address" name="address" type="text" placeholder="" v-model="address" required>
+                    </inputfield>
+                    <label for="address" v-bind:class="{ active: address }">Address</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="city" type="text" class="validate form-input" minlength="1" required>
-                    <label for="city">city</label>
+                    <inputField id="city" name="city" type="text" placeholder="" v-model="city" required>
+                    </inputfield>
+                    <label for="city" v-bind:class="{ active: city }">city</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="zip" type="text" class="validate form-input" minlength="1" required>
-                    <label for="zip">zip</label>
+                    <inputField id="zip" name="zip" type="text" placeholder="" v-model="zip" required>
+                    </inputfield>
+                    <label for="zip" v-bind:class="{ active: zip }">zip</label>
                 </div>
             </div>
             <div class="row cf">
@@ -64,11 +69,6 @@ export default {
   components: {
     inputField
   },
-  data() {
-    return {
-      inputValue: ""
-    };
-  },
   computed: {
     gender: {
       get() {
@@ -92,6 +92,38 @@ export default {
       },
       set(value) {
         this.$store.commit("SET_LASTNAME", value);
+      }
+    },
+    email: {
+      get() {
+        return this.$store.state.email;
+      },
+      set(value) {
+        this.$store.commit("SET_EMAIL", value);
+      }
+    },
+    address: {
+      get() {
+        return this.$store.state.address;
+      },
+      set(value) {
+        this.$store.commit("SET_ADDRESS", value);
+      }
+    },
+    city: {
+      get() {
+        return this.$store.state.city;
+      },
+      set(value) {
+        this.$store.commit("SET_CITY", value);
+      }
+    },
+    zip: {
+      get() {
+        return this.$store.state.zip;
+      },
+      set(value) {
+        this.$store.commit("SET_ZIP", value);
       }
     }
   }
