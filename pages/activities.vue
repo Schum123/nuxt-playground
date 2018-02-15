@@ -34,9 +34,14 @@ export default {
       search: ""
     };
   },
-  async asyncData() {
+  async asyncData({error}) {
+    try {
     const { data } = await axios.get("http://localhost:3000/activities");
     return { articles: data };
+    }
+    catch (e) {
+      error({ message: "Activities not found", statusCode: 404 });
+    }
   },
   methods: {
     clearSearch: function() {

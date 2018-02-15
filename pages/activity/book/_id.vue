@@ -39,6 +39,10 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  font-size: 30px;
+  line-height: 30px;
+}
 .head-wrapper {
   background-color: #fff;
   padding: 30px;
